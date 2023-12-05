@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Movie_Booking_Application</string>
     <string name="available_shows">Available Shows</string>
+    <string name="confirm_booking">Confirm Booking</string>
 </resources>

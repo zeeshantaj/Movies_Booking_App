@@ -1,5 +1,6 @@
 package com.example.movie_booking_application.Adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.movie_booking_application.Activity.Booking_Activity;
 import com.example.movie_booking_application.Model.Movies;
 import com.example.movie_booking_application.R;
 
@@ -34,6 +36,13 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
         holder.title.setText(movies.getTitle());
         holder.des.setText(movies.getDescription());
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), Booking_Activity.class);
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
