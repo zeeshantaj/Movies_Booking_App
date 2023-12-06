@@ -2,11 +2,7 @@
     android:shape="rectangle">
 
     <stroke android:width="4dp"
-        android:color="@color/black"/>
+        android:color="@color/startColor"/>
     <corners android:radius="14dp"/>
-    <gradient
-        android:startColor="@color/startColor"
-        android:centerColor="@color/centerColor"
-        android:endColor="@color/endColor"/>
 
 </shape>

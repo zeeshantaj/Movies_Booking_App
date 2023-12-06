@@ -2,4 +2,11 @@
     <string name="app_name">Movie_Booking_Application</string>
     <string name="available_shows">Available Shows</string>
     <string name="confirm_booking">Confirm Booking</string>
+    <string name="_1">1</string>
+    <string name="ticket">Ticket</string>
+    <string name="_9_12_am">9 - 12 am</string>
+    <string name="_6_9_pm">6 - 9 pm</string>
+    <string name="_3_6_pm">3 - 6 pm</string>
+    <string name="_12_3_pm">12 - 3 pm</string>
+    <string name="show_timings">Show Timings</string>
 </resources>
