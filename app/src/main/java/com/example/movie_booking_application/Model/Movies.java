@@ -3,6 +3,10 @@ package com.example.movie_booking_application.Model;
 public class Movies {
     private String title,description,imageUrl;
 
+    public Movies(){
+
+    }
+
     public Movies(String title, String description, String imageUrl) {
         this.title = title;
         this.description = description;

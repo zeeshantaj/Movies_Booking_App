@@ -3,6 +3,7 @@ package com.example.movie_booking_application.Adapter;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -39,17 +40,36 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
         Movies movies = moviesList.get(position);
         holder.title.setText(movies.getTitle());
         holder.des.setText(movies.getDescription());
-
+        holder.itemView.setOnTouchListener((view, motionEvent) -> {
+            switch (motionEvent.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    // Scale down the clicked item
+                    view.setScaleX(0.9f);
+                    view.setScaleY(0.9f);
+                    break;
+                case MotionEvent.ACTION_UP:
+                case MotionEvent.ACTION_CANCEL:
+                    // Restore the original size when touch is released or canceled
+                    view.setScaleX(1.0f);
+                    view.setScaleY(1.0f);
+                    break;
+            }
+            return false;
+        });
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String imageUrlText = moviesList.get(position).getImageUrl();
+                String title = moviesList.get(position).getTitle();
+                String des = moviesList.get(position).getDescription();
 
                 Intent intent = new Intent(v.getContext(), Booking_Activity.class);
-                intent.putExtra("ImageUrl",imageUrlText);
-                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) v.getContext(),
-                        holder.imageUrl,   // Shared element: image view in the RecyclerView item
-                        ViewCompat.getTransitionName(holder.imageUrl)); // Use transition name if needed
+                intent.putExtra("des",des);
+                intent.putExtra("title",title);
+                intent.putExtra("imageUrl",imageUrlText);
+//                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) v.getContext(),
+//                        holder.imageUrl,   // Shared element: image view in the RecyclerView item
+//                        ViewCompat.getTransitionName(holder.imageUrl)); // Use transition name if needed
 
 
                 v.getContext().startActivity(intent);
