@@ -1,5 +1,6 @@
 package com.example.movie_booking_application.Adapter;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,8 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.movie_booking_application.Activity.Booking_Activity;
 import com.example.movie_booking_application.Model.Movies;
 import com.example.movie_booking_application.R;
@@ -39,10 +43,21 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String imageUrlText = moviesList.get(position).getImageUrl();
+
                 Intent intent = new Intent(v.getContext(), Booking_Activity.class);
+                intent.putExtra("ImageUrl",imageUrlText);
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) v.getContext(),
+                        holder.imageUrl,   // Shared element: image view in the RecyclerView item
+                        ViewCompat.getTransitionName(holder.imageUrl)); // Use transition name if needed
+
+
                 v.getContext().startActivity(intent);
             }
         });
+        Glide.with(holder.itemView.getContext())
+                .load(movies.getImageUrl())
+                .into(holder.imageUrl);
     }
 
     @Override

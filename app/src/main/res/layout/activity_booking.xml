@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     tools:context=".Activity.Booking_Activity">
 
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -21,6 +23,7 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/demo_movie_img_"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.48"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,9 +31,9 @@
                 android:id="@id/movie_title_book"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
                 android:textColor="?android:textColor"
                 android:textSize="24sp"
-                android:layout_marginStart="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/movie_img_book" />
@@ -41,9 +44,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
+                android:paddingBottom="5dp"
                 android:textColor="?android:textColor"
                 android:textSize="16sp"
-                android:paddingBottom="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/movie_title_book" />
@@ -53,10 +56,10 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@string/show_timings"
+                android:textAlignment="center"
                 android:textColor="@color/startColor"
                 android:textSize="30sp"
                 android:textStyle="bold"
-                android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/movie_des" />
@@ -74,104 +77,103 @@
                     android:id="@+id/radioBtn_12to3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
+                    android:text="@string/_12_3_pm"
+                    android:textAlignment="textStart"
 
                     android:textColor="?android:textColor"
-                    android:text="@string/_12_3_pm"
-                    android:textAlignment="textStart"/>
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <RadioButton
                     android:id="@+id/radioBtn_3to6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
                     android:layout_marginTop="4dp"
+                    android:text="@string/_3_6_pm"
                     android:textColor="?android:textColor"
-                    android:text="@string/_3_6_pm" />
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <RadioButton
                     android:id="@+id/radioBtn_6to9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
                     android:layout_marginTop="4dp"
+                    android:text="@string/_6_9_pm"
                     android:textColor="?android:textColor"
-                    android:text="@string/_6_9_pm" />
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <RadioButton
                     android:id="@+id/radioBtn_9to12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
                     android:layout_marginTop="4dp"
+                    android:text="@string/_9_12_am"
                     android:textColor="?android:textColor"
-                    android:text="@string/_9_12_am" />
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
             </RadioGroup>
 
-                        <LinearLayout
-                            android:id="@+id/linearLay1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginTop="10dp"
-                            app:layout_constraintTop_toBottomOf="@id/radioGroup">
+            <LinearLayout
+                android:id="@+id/linearLay1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/radioGroup">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/ticket"
-                                android:textStyle="bold"
-                                android:textColor="?android:textColor"
-                                android:textSize="18sp"
-                                android:layout_gravity="center"
-                                android:layout_marginStart="15dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="15dp"
+                    android:text="@string/ticket"
+                    android:textColor="?android:textColor"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
-                            <ImageView
-                                android:id="@+id/minusBtn"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/minus"
-                                android:layout_gravity="center"
-                                android:foreground="?selectableItemBackground"
-                                android:layout_marginStart="10dp"
-                                />
+                <ImageView
+                    android:id="@+id/minusBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:foreground="?selectableItemBackground"
+                    android:src="@drawable/minus" />
 
-                            <TextView
-                                android:id="@+id/incrementTxt"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textColor="?android:textColor"
-                                android:text="@string/_1"
-                                android:singleLine="true"
-                                android:maxLines="1"
-                                android:layout_marginStart="5dp"
-                                android:textStyle="bold"
-                                android:textSize="24sp"/>
+                <TextView
+                    android:id="@+id/incrementTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="@string/_1"
+                    android:textColor="?android:textColor"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
-                            <ImageView
-                                android:id="@+id/addBtn"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/plus"
-                                android:foreground="?selectableItemBackground"
-                                android:layout_marginStart="10dp"
-                                android:layout_gravity="center"/>
-                        </LinearLayout>
+                <ImageView
+                    android:id="@+id/addBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="10dp"
+                    android:foreground="?selectableItemBackground"
+                    android:src="@drawable/plus" />
+            </LinearLayout>
 
             <Button
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/btn_bg"
+                android:foreground="?selectableItemBackground"
                 android:text="@string/confirm_booking"
                 android:textColor="?android:textColor"
                 android:textSize="16sp"
-                android:foreground="?selectableItemBackground"
-                android:layout_marginBottom="5dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
