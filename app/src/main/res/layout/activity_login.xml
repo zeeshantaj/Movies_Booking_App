@@ -6,4 +6,50 @@
     android:layout_height="match_parent"
     tools:context=".Login.LoginActivity">
 
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/numberBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:drawableTint="@color/startColor"
+            android:background="@android:color/transparent"
+            android:drawableStart="@drawable/baseline_numbers_24" />
+
+        <Button
+            android:id="@+id/otpBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:background="@android:color/transparent"
+            android:drawableStart="@drawable/baseline_textsms_24" />
+
+        <Button
+            android:id="@+id/setupBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:background="@android:color/transparent"
+            android:drawableStart="@drawable/setup" />
+
+    </LinearLayout>
+
+
+    <FrameLayout
+        android:id="@+id/login_frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout3" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
