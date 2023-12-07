@@ -1,7 +1,9 @@
 package com.example.movie_booking_application.Adapter;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.transition.Fade;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -24,8 +26,11 @@ import java.util.List;
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder> {
    private List<Movies> moviesList;
 
-    public MoviesAdapter(List<Movies> moviesList) {
+    private Context context;
+
+    public MoviesAdapter(List<Movies> moviesList, Context context ) {
         this.moviesList = moviesList;
+        this.context = context;
     }
 
     @NonNull
@@ -56,6 +61,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
             }
             return false;
         });
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,15 +70,16 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
                 String des = moviesList.get(position).getDescription();
 
                 Intent intent = new Intent(v.getContext(), Booking_Activity.class);
+
                 intent.putExtra("des",des);
                 intent.putExtra("title",title);
                 intent.putExtra("imageUrl",imageUrlText);
-//                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) v.getContext(),
-//                        holder.imageUrl,   // Shared element: image view in the RecyclerView item
-//                        ViewCompat.getTransitionName(holder.imageUrl)); // Use transition name if needed
+                ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) v.getContext(),
+                        holder.imageUrl,   // Shared element: image view in the RecyclerView item
+                        ViewCompat.getTransitionName(holder.imageUrl)); // Use transition name if needed
 
 
-                v.getContext().startActivity(intent);
+                v.getContext().startActivity(intent,options.toBundle());
             }
         });
         Glide.with(holder.itemView.getContext())

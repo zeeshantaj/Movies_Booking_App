@@ -9,9 +9,8 @@
         motion:duration="1000">
        <KeyFrameSet>
 
-
-
        </KeyFrameSet>
+
         <OnSwipe
             motion:touchAnchorId="@id/movie_recycler"
             motion:touchAnchorSide="top"
@@ -21,29 +20,35 @@
 
     <ConstraintSet android:id="@+id/start">
         <Constraint
-            android:id="@+id/textView"
+            android:id="@+id/availTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintTop_toBottomOf="@id/cardView2"
             />
+
+        <Constraint
+            android:id="@+id/shimmerLayout"
+            android:visibility="gone"/>
+
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
         <Constraint
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            motion:layout_constraintEnd_toEndOf="parent"
-            motion:layout_constraintStart_toStartOf="parent"
-            motion:layout_constraintTop_toBottomOf="@id/toolbar"
-
-            motion:layout_constraintHorizontal_bias="0.0" />
-
+            android:id="@+id/shimmerLayout"
+            android:visibility="gone"/>
         <Constraint
             android:id="@+id/cardView2"
             android:visibility="gone"/>
+        <Constraint
+            motion:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            motion:layout_constraintTop_toBottomOf="@+id/cardView2"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/availTxt"
+            motion:layout_constraintHorizontal_bias="0.0" />
 
     </ConstraintSet>
 </MotionScene>

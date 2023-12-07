@@ -2,10 +2,13 @@ package com.example.movie_booking_application.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.transition.Fade;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -39,8 +42,13 @@ public class Booking_Activity extends AppCompatActivity {
         confirmBtn = findViewById(R.id.confirmBtn);
 
         add.setOnClickListener(v -> {
+            add.setEnabled(true);
             count++;
             incrementText.setText(String.valueOf(count));
+            if (count == 100){
+                Toast.makeText(this, "Limit Exceed", Toast.LENGTH_SHORT).show();
+                add.setEnabled(false);
+            }
         });
         minus.setOnClickListener(v -> {
             if (count > 1){
@@ -65,6 +73,14 @@ public class Booking_Activity extends AppCompatActivity {
         Glide.with(this)
                 .load(url)
                 .into(movieImage);
+        Fade fade = new Fade();
+        View decor = getWindow().getDecorView();
+        fade.excludeTarget(decor.findViewById(androidx.appcompat.R.id.action_bar_container),false);
+        fade.excludeTarget(android.R.id.statusBarBackground,true);
+        fade.excludeTarget(android.R.id.navigationBarBackground,true);
+
+        getWindow().setEnterTransition(fade);
+        getWindow().setExitTransition(fade);
     }
 
     private void setToolbar(){

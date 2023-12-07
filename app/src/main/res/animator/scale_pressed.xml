@@ -18,13 +18,13 @@
     <set>
         <objectAnimator
             android:propertyName="scaleX"
-            android:valueTo="0.90"
+            android:valueTo="0.70"
             android:duration="@android:integer/config_shortAnimTime"
             android:interpolator="@android:interpolator/fast_out_slow_in"/>
 
         <objectAnimator
             android:propertyName="scaleY"
-            android:valueTo="0.90"
+            android:valueTo="0.70"
             android:duration="@android:integer/config_shortAnimTime"
             android:interpolator="@android:interpolator/fast_out_slow_in"/>
     </set>
