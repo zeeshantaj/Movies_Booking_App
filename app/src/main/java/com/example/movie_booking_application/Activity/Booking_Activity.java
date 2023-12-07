@@ -3,6 +3,7 @@ package com.example.movie_booking_application.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -22,6 +23,8 @@ public class Booking_Activity extends AppCompatActivity {
     private ImageView movieImage;
     private int count = 1;
     private Toolbar toolbar;
+    private Button confirmBtn;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +36,7 @@ public class Booking_Activity extends AppCompatActivity {
         add = findViewById(R.id.addBtn);
         minus = findViewById(R.id.minusBtn);
         incrementText = findViewById(R.id.incrementTxt);
+        confirmBtn = findViewById(R.id.confirmBtn);
 
         add.setOnClickListener(v -> {
             count++;
@@ -43,6 +47,9 @@ public class Booking_Activity extends AppCompatActivity {
                 count--;
                 incrementText.setText(String.valueOf(count));
             }
+        });
+        confirmBtn.setOnClickListener(v -> {
+
         });
         setDetails();
         setToolbar();

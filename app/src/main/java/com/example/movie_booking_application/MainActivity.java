@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     private RecyclerView recyclerView;
-    private Movies movies;
     private List<Movies> moviesList;
     private MoviesAdapter adapter;
     private ImageCarousel carousel;
