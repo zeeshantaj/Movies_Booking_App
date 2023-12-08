@@ -9,4 +9,6 @@
     <string name="_3_6_pm">3 - 6 pm</string>
     <string name="_12_3_pm">12 - 3 pm</string>
     <string name="show_timings">Show Timings</string>
+    <string name="next">Next</string>
+    <string name="setup">Setup</string>
 </resources>
