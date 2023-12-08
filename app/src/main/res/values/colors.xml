@@ -7,4 +7,6 @@
     <color name="yellow">#FFEB3B</color>
     <color name="endColor">#3E0303</color>
     <color name="grey">#EFEAEA</color>
+    <color name="lightBlue">#56AFF6</color>
+    <color name="darkBlue">#03599E</color>
 </resources>

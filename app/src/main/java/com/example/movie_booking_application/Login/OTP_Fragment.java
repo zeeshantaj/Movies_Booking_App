@@ -24,6 +24,7 @@ public class OTP_Fragment extends Fragment {
 
         next.setOnClickListener(v -> {
             LoginActivity.setFragment(new Setup_Profile_Fragment(),getActivity());
+
         });
 
         return view;

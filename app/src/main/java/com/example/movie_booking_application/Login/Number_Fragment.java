@@ -23,6 +23,7 @@ public class Number_Fragment extends Fragment {
 
         next.setOnClickListener(v -> {
             LoginActivity.setFragment(new OTP_Fragment(),getActivity());
+
         });
         return view;
     }

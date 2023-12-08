@@ -22,7 +22,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="false"
-            android:drawableTint="@color/startColor"
             android:background="@android:color/transparent"
             android:drawableStart="@drawable/baseline_numbers_24" />
 
