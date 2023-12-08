@@ -38,6 +38,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:22.3.0'
     implementation 'com.google.firebase:firebase-firestore:24.9.1'
     implementation 'com.google.firebase:firebase-database:20.3.0'
+    implementation 'com.google.firebase:firebase-storage:20.3.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
@@ -48,4 +49,7 @@ dependencies {
     implementation 'com.github.aabhasr1:OtpView:v1.1.2'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.squareup.picasso:picasso:2.8'
+    implementation 'com.hbb20:ccp:2.6.0'
+    implementation 'com.googlecode.libphonenumber:libphonenumber:8.12.35' // Or use the latest version available
+    //implementation 'com.github.joielechong:countrycodepicker:2.4.2'
 }

@@ -15,5 +15,6 @@ dependencyResolutionManagement {
     }
 }
 
+
 rootProject.name = "Movie_Booking_Application"
 include ':app'

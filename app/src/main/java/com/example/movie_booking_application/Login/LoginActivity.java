@@ -6,13 +6,18 @@ import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.widget.Button;
 
+import com.example.movie_booking_application.MainActivity;
 import com.example.movie_booking_application.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -21,21 +26,30 @@ public class LoginActivity extends AppCompatActivity {
 
     private static Button num, otp, setup;
     private int backPressCount;
-
+    private SharedViewModel sharedViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        sharedViewModel = new ViewModelProvider(this).get(SharedViewModel.class);
+
         num = findViewById(R.id.numberBtn);
         otp = findViewById(R.id.otpBtn);
         setup = findViewById(R.id.setupBtn);
 
-        fragmentManager = getSupportFragmentManager();
-        currentFragment = fragmentManager.findFragmentById(R.id.login_frameLayout);
-        currentFragment = new Number_Fragment();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser user = auth.getCurrentUser();
+        if (user != null){
+            startActivity(new Intent(this, MainActivity.class));
+        }
+        else {
+            fragmentManager = getSupportFragmentManager();
+            currentFragment = fragmentManager.findFragmentById(R.id.login_frameLayout);
+            currentFragment = new Number_Fragment();
+            setFragment(currentFragment, this);
 
-        setFragment(currentFragment, this);
+        }
     }
 
     public static void setColor(Context context) {

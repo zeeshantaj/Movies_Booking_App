@@ -3,7 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
+    <ProgressBar
+        android:id="@+id/otpProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -13,6 +21,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/otp_img"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_marginTop="15dp"
@@ -27,7 +36,7 @@
             android:padding="15dp"
             android:layout_gravity="center"
             android:background="@drawable/btn_bg"
-            android:text="Pleas wait..\n you'll receive OTP shortly"
+            android:text="@string/pleas_wait_n_you_ll_receive_otp_code_shortly"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="24sp" />
@@ -42,6 +51,17 @@
             android:layout_marginTop="20dp"
             android:textSize="18sp"/>
 
+        <TextView
+            android:id="@+id/resendTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="@string/resend_otp"
+            android:visibility="gone"
+            android:layout_marginEnd="20dp"
+            android:textColor="@color/red"
+            android:textStyle="bold"
+            android:layout_gravity="end"/>
 
         <in.aabhasjindal.otptextview.OtpTextView
             android:id="@+id/otp_view"
