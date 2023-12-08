@@ -1,6 +1,5 @@
 package com.example.movie_booking_application.Login;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.drawable.DrawableCompat;
@@ -11,9 +10,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
-import android.window.OnBackInvokedDispatcher;
 
 import com.example.movie_booking_application.R;
 
@@ -119,8 +116,8 @@ public class LoginActivity extends AppCompatActivity {
 //            Log.e("MyApp", "instanceofSetup");
 //        }
 
-        Drawable drawableNumber = ContextCompat.getDrawable(context, R.drawable.baseline_numbers_24).mutate();
-        Drawable drawableOTP = ContextCompat.getDrawable(context, R.drawable.baseline_textsms_24).mutate();
+        Drawable drawableNumber = ContextCompat.getDrawable(context, R.drawable.number).mutate();
+        Drawable drawableOTP = ContextCompat.getDrawable(context, R.drawable.otp).mutate();
         Drawable drawableSetup = ContextCompat.getDrawable(context, R.drawable.setup).mutate();
 
         int colorActive = ContextCompat.getColor(context, R.color.startColor);
