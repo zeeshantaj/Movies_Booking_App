@@ -3,6 +3,8 @@ package com.example.movie_booking_application.Login;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -35,6 +37,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -63,14 +68,15 @@ public class Setup_Profile_Fragment extends Fragment {
 
 
         auth = FirebaseAuth.getInstance();
-        uid = auth.getUid();
+        uid = "fhadisufhui92857394";
+        //uid = auth.getUid();
         reference = FirebaseDatabase.getInstance().getReference("Users").child(uid);
         storage = FirebaseStorage.getInstance();
         storageRef = storage.getReference();
 
         String imageName = "image_" + uid + ".jpg";
         imageRef = storageRef.child("UserImages/"+ imageName);
-
+        uploadPlaceHolder();
         return view;
     }
 
@@ -108,7 +114,7 @@ public class Setup_Profile_Fragment extends Fragment {
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    ShakeAnimation.setAnimation(getActivity(),setup);
+                                    ShakeAnimation.setAnimation(getActivity(),profileImage);
                                     ShakeAnimation.setAnimation(getActivity(),userName);
                                     progressBar.setVisibility(View.GONE);
                                     setup.setEnabled(true);
@@ -121,7 +127,7 @@ public class Setup_Profile_Fragment extends Fragment {
                             @Override
                             public void onFailure(@NonNull Exception e) {
                                 progressBar.setVisibility(View.GONE);
-                                ShakeAnimation.setAnimation(getActivity(),setup);
+                                ShakeAnimation.setAnimation(getActivity(),profileImage);
                                 ShakeAnimation.setAnimation(getActivity(),userName);
                                 setup.setEnabled(true);
                                 Toast.makeText(getActivity(), "Error "+e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
@@ -133,7 +139,7 @@ public class Setup_Profile_Fragment extends Fragment {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         progressBar.setVisibility(View.GONE);
-                        ShakeAnimation.setAnimation(getActivity(),setup);
+                        ShakeAnimation.setAnimation(getActivity(),profileImage);
                         ShakeAnimation.setAnimation(getActivity(),userName);
                         setup.setEnabled(true);
                         Log.e("MyApp", "Error " + e.getLocalizedMessage());
@@ -145,7 +151,7 @@ public class Setup_Profile_Fragment extends Fragment {
             }
             else {
                 setup.setEnabled(true);
-                ShakeAnimation.setAnimation(getActivity(),setup);
+                ShakeAnimation.setAnimation(getActivity(),profileImage);
                 ShakeAnimation.setAnimation(getActivity(),userName);
 
                 Toast.makeText(getActivity(), "Name field is require", Toast.LENGTH_SHORT).show();
@@ -153,26 +159,39 @@ public class Setup_Profile_Fragment extends Fragment {
         }));
     }
 
+    private void uploadPlaceHolder(){
+        BitmapDrawable drawable = (BitmapDrawable) getResources().getDrawable(R.drawable.place_holder);
+        Bitmap bitmap = drawable.getBitmap();
+
+        // Create a file from the Bitmap (for temporary storage)
+        File file = new File(getActivity().getCacheDir(), "profile_img.png");
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, fos);
+            fos.flush();
+            fos.close();
+
+            // Get the URI of the created file
+            Uri placeholderUri = Uri.fromFile(file);
+
+            // Set the image to profileImage
+            profileImage.setImageURI(placeholderUri);
+
+            // Upload the placeholder image to Firebase Storage
+            uploadTask = imageRef.putFile(placeholderUri);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     private ActivityResultLauncher<Intent> imageLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
             result -> {
-                if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null){
+                if (result.getResultCode() == Activity.RESULT_OK && result.getData() != null) {
                     selectedImageUri = result.getData().getData();
                     profileImage.setImageURI(selectedImageUri);
                     uploadTask = imageRef.putFile(selectedImageUri);
-                }
-            });
 
-//    @Override
-//    public void onAttach(@NonNull Context context) {
-//        super.onAttach(context);
-//        if (context instanceof LoginCallBack) {
-//            loginCallBack = (LoginCallBack) context;
-//        } else {
-//            throw new ClassCastException(context.toString() + " must implement LoginCallback");
-//        }
-//        loginCallBack.onStepChanged(3);
-//
-//        Log.e("MyApp","ProfileFragment");
-//
-//    }
+                }
+
+            });
 }

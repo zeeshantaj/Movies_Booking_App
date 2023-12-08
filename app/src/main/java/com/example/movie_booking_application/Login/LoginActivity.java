@@ -48,8 +48,8 @@ public class LoginActivity extends AppCompatActivity {
             currentFragment = fragmentManager.findFragmentById(R.id.login_frameLayout);
             currentFragment = new Number_Fragment();
             setFragment(currentFragment, this);
-
         }
+
     }
 
     public static void setColor(Context context) {
@@ -129,28 +129,6 @@ public class LoginActivity extends AppCompatActivity {
 //            setup.setCompoundDrawablesRelativeWithIntrinsicBounds(drawableActiveSetup, null, null, null);
 //            Log.e("MyApp", "instanceofSetup");
 //        }
-
-        Drawable drawableNumber = ContextCompat.getDrawable(context, R.drawable.number).mutate();
-        Drawable drawableOTP = ContextCompat.getDrawable(context, R.drawable.otp).mutate();
-        Drawable drawableSetup = ContextCompat.getDrawable(context, R.drawable.setup).mutate();
-
-        int colorActive = ContextCompat.getColor(context, R.color.startColor);
-        int colorDefault = ContextCompat.getColor(context, R.color.lightBlue);
-
-        if (currentFragment instanceof Number_Fragment) {
-            setButtonDrawableTint(num, drawableNumber, colorActive);
-            setButtonDrawableTint(otp, drawableOTP, colorDefault);
-            setButtonDrawableTint(setup, drawableSetup, colorDefault);
-        } else if (currentFragment instanceof OTP_Fragment) {
-            setButtonDrawableTint(num, drawableNumber, colorDefault);
-            setButtonDrawableTint(otp, drawableOTP, colorActive);
-            setButtonDrawableTint(setup, drawableSetup, colorDefault);
-        } else if (currentFragment instanceof Setup_Profile_Fragment) {
-            setButtonDrawableTint(num, drawableNumber, colorDefault);
-            setButtonDrawableTint(otp, drawableOTP, colorDefault);
-            setButtonDrawableTint(setup, drawableSetup, colorActive);
-        }
-
 //        if (currentFragment instanceof Number_Fragment) {
 //            num.setCompoundDrawablesRelativeWithIntrinsicBounds(drawableActiveNumber, null, null, null);
 //            Log.e("MyApp", "instanceofNumber");
@@ -176,6 +154,26 @@ public class LoginActivity extends AppCompatActivity {
 //            Log.e("MyApp", "SetupElse");
 //        }
 
+        Drawable drawableNumber = ContextCompat.getDrawable(context, R.drawable.number).mutate();
+        Drawable drawableOTP = ContextCompat.getDrawable(context, R.drawable.otp).mutate();
+        Drawable drawableSetup = ContextCompat.getDrawable(context, R.drawable.setup).mutate();
+
+        int colorActive = ContextCompat.getColor(context, R.color.startColor);
+        int colorDefault = ContextCompat.getColor(context, R.color.lightBlue);
+
+        if (currentFragment instanceof Number_Fragment) {
+            setButtonDrawableTint(num, drawableNumber, colorActive);
+            setButtonDrawableTint(otp, drawableOTP, colorDefault);
+            setButtonDrawableTint(setup, drawableSetup, colorDefault);
+        } else if (currentFragment instanceof OTP_Fragment) {
+            setButtonDrawableTint(num, drawableNumber, colorDefault);
+            setButtonDrawableTint(otp, drawableOTP, colorActive);
+            setButtonDrawableTint(setup, drawableSetup, colorDefault);
+        } else if (currentFragment instanceof Setup_Profile_Fragment) {
+            setButtonDrawableTint(num, drawableNumber, colorDefault);
+            setButtonDrawableTint(otp, drawableOTP, colorDefault);
+            setButtonDrawableTint(setup, drawableSetup, colorActive);
+        }
     }
 
     public static void setFragment(Fragment fragment, Context context) {

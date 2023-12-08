@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +17,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.movie_booking_application.Animator.ShakeAnimation;
 import com.example.movie_booking_application.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -34,6 +36,7 @@ public class OTP_Fragment extends Fragment {
     private FirebaseAuth auth;
     private TextView timer,resendTxt;
     private ProgressBar progressBar;
+    private ImageView otpImage;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -45,12 +48,14 @@ public class OTP_Fragment extends Fragment {
         timer = view.findViewById(R.id.timer);
         progressBar = view.findViewById(R.id.otpProgress);
         resendTxt = view.findViewById(R.id.resendTxt);
+        otpImage = view.findViewById(R.id.otp_img);
 
         resendTxt.setVisibility(View.GONE);
         long time = 90000;
         CountDownTimer countDownTimer = new CountDownTimer(time,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
+                timer.setVisibility(View.VISIBLE);
                 timer.setText("seconds remaining: " + millisUntilFinished / 1000);
 
             }
@@ -107,6 +112,8 @@ public class OTP_Fragment extends Fragment {
 
                     }
                     else {
+                        ShakeAnimation.setAnimation(getActivity(),otpImage);
+                        ShakeAnimation.setAnimation(getActivity(),otpTextView);
                         Toast.makeText(getActivity(), "Fill OTP", Toast.LENGTH_SHORT).show();
                     }
                 }));

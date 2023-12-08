@@ -67,15 +67,17 @@
             android:id="@+id/otp_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            app:bar_inactive_color="@color/black"
             android:textColor="@color/lightBlue"
-            app:height="40dp"
-            app:width="40dp"
             app:bar_enabled="true"
             app:bar_height="2dp"
+            app:height="40dp"
             app:length="6"
-            android:layout_margin="20dp"
-            android:layout_gravity="center"
-            app:otp_text_size="24dp"/>
+            app:otp_text_size="24dp"
+            app:width="40dp" />
+
         <Button
             android:id="@+id/next2"
             android:layout_width="wrap_content"
