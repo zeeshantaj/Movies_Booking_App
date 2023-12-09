@@ -43,7 +43,7 @@ public class Booking_Activity extends AppCompatActivity {
     private Toolbar toolbar;
     private Button confirmBtn;
     private RadioGroup radioGroup;
-    String selectedText;
+    private String selectedText,imageUrl;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,14 +82,14 @@ public class Booking_Activity extends AppCompatActivity {
     }
     private void setDetails(){
         Intent intent = getIntent();
-        String url = intent.getStringExtra("imageUrl");
+        imageUrl = intent.getStringExtra("imageUrl");
         String titleStr = intent.getStringExtra("title");
         String desStr = intent.getStringExtra("des");
 
         title.setText(titleStr);
         des.setText(desStr);
         Glide.with(this)
-                .load(url)
+                .load(imageUrl)
                 .into(movieImage);
         Fade fade = new Fade();
         View decor = getWindow().getDecorView();
@@ -134,7 +134,8 @@ public class Booking_Activity extends AppCompatActivity {
             Date date = calendar.getTime();
             String currentTime = String.valueOf(date);
             HashMap<String,String> hashMap = new HashMap<>();
-            hashMap.put("MovieTitle",title.getText().toString());
+            hashMap.put("movieTitle",title.getText().toString());
+            hashMap.put("imageUrl",imageUrl);
             hashMap.put("timing",selectedText);
             hashMap.put("person",incrementText.getText().toString());
             hashMap.put("currentTime",currentTime);
