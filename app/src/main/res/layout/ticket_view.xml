@@ -2,17 +2,19 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="15dp"
-        app:cardCornerRadius="15dp"
         android:layout_margin="10dp"
+        android:elevation="15dp"
         app:cardBackgroundColor="@color/lightGreen"
+
+        app:cardCornerRadius="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -25,10 +27,10 @@
                 android:id="@+id/ticket_movieTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
                 android:fontFamily="@font/actor"
                 android:maxLines="1"
                 android:singleLine="true"
-                android:layout_marginTop="6dp"
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="30sp"
@@ -50,14 +52,15 @@
 
             <TextView
                 android:id="@+id/ticket_date"
-                android:layout_width="100dp"
-                android:layout_height="32dp"
-                android:singleLine="true"
-                android:maxLines="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:textColor="@color/black"
                 android:fontFamily="@font/actor"
-                android:textSize="18sp"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="21sp"
+                app:layout_constraintEnd_toEndOf="@+id/textView5"
                 app:layout_constraintStart_toStartOf="@+id/textView5"
                 app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -77,10 +80,10 @@
                 android:id="@+id/ticket_person"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
                 android:fontFamily="@font/actor"
                 android:textColor="@color/black"
-                android:layout_marginTop="4dp"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="@+id/textView6"
                 app:layout_constraintStart_toStartOf="@+id/textView6"
                 app:layout_constraintTop_toBottomOf="@+id/textView6" />
@@ -90,7 +93,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:fontFamily="@font/actor"
                 android:text="Price for 1 person"
                 android:textColor="@color/black"
                 android:textSize="18sp"
@@ -101,10 +103,10 @@
                 android:id="@+id/ticket_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
                 android:text="RS:1500"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                android:layout_marginStart="10dp"
                 app:layout_constraintBottom_toBottomOf="@+id/textView7"
                 app:layout_constraintStart_toEndOf="@+id/textView7"
                 app:layout_constraintTop_toTopOf="@+id/textView7" />
@@ -118,16 +120,27 @@
                 android:src="@drawable/demo_movie_img_"
                 app:layout_constraintTop_toBottomOf="@id/ticket_movieTitle" />
 
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/ticket_bg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ticket_price" />
+
             <ImageView
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:layout_marginTop="30dp"
-                android:src="@drawable/qr_code"
                 android:layout_marginBottom="10dp"
+                android:src="@drawable/qr_code"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView7" />
+                app:layout_constraintTop_toBottomOf="@+id/view" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
