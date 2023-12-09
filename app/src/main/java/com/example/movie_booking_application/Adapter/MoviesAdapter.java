@@ -20,6 +20,7 @@ import com.bumptech.glide.Glide;
 import com.example.movie_booking_application.Activity.Booking_Activity;
 import com.example.movie_booking_application.Model.Movies;
 import com.example.movie_booking_application.R;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 import java.util.List;
 

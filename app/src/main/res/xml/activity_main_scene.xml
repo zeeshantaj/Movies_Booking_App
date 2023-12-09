@@ -28,16 +28,11 @@
             motion:layout_constraintTop_toBottomOf="@id/cardView2"
             />
 
-        <Constraint
-            android:id="@+id/shimmerLayout"
-            android:visibility="gone"/>
 
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
-        <Constraint
-            android:id="@+id/shimmerLayout"
-            android:visibility="gone"/>
+
         <Constraint
             android:id="@+id/cardView2"
             android:visibility="gone"/>
