@@ -2,6 +2,7 @@ package com.example.movie_booking_application.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.transition.Fade;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,6 +32,7 @@ import org.checkerframework.checker.units.qual.C;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Formatter;
 import java.util.HashMap;
 
 public class Booking_Activity extends AppCompatActivity {
@@ -136,7 +138,11 @@ public class Booking_Activity extends AppCompatActivity {
             hashMap.put("timing",selectedText);
             hashMap.put("person",incrementText.getText().toString());
             hashMap.put("currentTime",currentTime);
-            reference.setValue(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+
+            long currentTimeMillis = System.currentTimeMillis();
+            String child = String.valueOf(currentTimeMillis);
+
+            reference.child(child).setValue(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void unused) {
                     confirmBtn.setEnabled(false);

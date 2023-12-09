@@ -68,8 +68,7 @@ public class Setup_Profile_Fragment extends Fragment {
 
 
         auth = FirebaseAuth.getInstance();
-        uid = "fhadisufhui92857394";
-        //uid = auth.getUid();
+        uid = auth.getUid();
         reference = FirebaseDatabase.getInstance().getReference("Users").child(uid);
         storage = FirebaseStorage.getInstance();
         storageRef = storage.getReference();
