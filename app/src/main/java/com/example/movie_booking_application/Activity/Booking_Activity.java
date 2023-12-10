@@ -3,6 +3,7 @@ package com.example.movie_booking_application.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.text.format.DateFormat;
 import android.transition.Fade;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,10 +31,12 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import org.checkerframework.checker.units.qual.C;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Formatter;
 import java.util.HashMap;
+import java.util.Locale;
 
 public class Booking_Activity extends AppCompatActivity {
     private ImageView add,minus;
@@ -129,16 +132,20 @@ public class Booking_Activity extends AppCompatActivity {
                 Toast.makeText(this, "Please Select Time of Show ", Toast.LENGTH_SHORT).show();
                 return;
             }
+            SimpleDateFormat DateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
 
-            Calendar calendar = Calendar.getInstance();
-            Date date = calendar.getTime();
-            String currentTime = String.valueOf(date);
+            Calendar c = Calendar.getInstance();
+
+            String curr_date
+                    = DateFormat.format(c.getTime());
+
+
             HashMap<String,String> hashMap = new HashMap<>();
             hashMap.put("movieTitle",title.getText().toString());
             hashMap.put("imageUrl",imageUrl);
             hashMap.put("timing",selectedText);
             hashMap.put("person",incrementText.getText().toString());
-            hashMap.put("currentTime",currentTime);
+            hashMap.put("currentTime",curr_date);
 
             long currentTimeMillis = System.currentTimeMillis();
             String child = String.valueOf(currentTimeMillis);
