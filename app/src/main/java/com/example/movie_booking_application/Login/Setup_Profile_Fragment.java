@@ -107,7 +107,9 @@ public class Setup_Profile_Fragment extends Fragment {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     Toast.makeText(getActivity(), "User created successfully", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(getActivity(), MainActivity.class));
+                                    Intent intent = new Intent(getActivity(),MainActivity.class);
+                                    intent.putExtra("personName",name);
+                                    intent.putExtra("imageUrl",image);
                                     getActivity().finish();
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
