@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.PagerSnapHelper;
@@ -54,19 +55,18 @@ public class Profile_Activity extends AppCompatActivity {
         String imageUrl = intent.getStringExtra("imageUrl");
         profileImage = findViewById(R.id.profileImage);
         profileName = findViewById(R.id.profileName);
-//        Glide.with(this)
-//                .load(imageUrl)
-//                .into(profileImage);
-//        profileName.setText(name);
+        Glide.with(this)
+                .load(imageUrl)
+                .into(profileImage);
+        profileName.setText(name);
 
         ticketList = new ArrayList<>();
-
-
         setToolbar();
         initRecycler();
     }
     private void initRecycler(){
         recyclerView = findViewById(R.id.profileRecycler);
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);

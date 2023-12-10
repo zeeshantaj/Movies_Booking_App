@@ -52,6 +52,7 @@ dependencies {
     implementation 'com.hbb20:ccp:2.6.0'
     implementation 'com.googlecode.libphonenumber:libphonenumber:8.12.35' // Or use the latest version available
 
+    implementation 'com.google.android.material:material:1.4.0' // Use the latest version
 
 
 }

@@ -1,6 +1,9 @@
 package com.example.movie_booking_application.Activity;
 
+import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.format.DateFormat;
@@ -17,14 +20,17 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.GlideException;
 import com.example.movie_booking_application.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -116,6 +122,9 @@ public class Booking_Activity extends AppCompatActivity {
     }
 
     private void bookTicket(){
+        ConstraintLayout constraintLayout = findViewById(R.id.constraintContainer);
+
+
         FirebaseAuth auth = FirebaseAuth.getInstance();
         String uid = auth.getUid();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Booking_Request").child(uid);
@@ -153,9 +162,40 @@ public class Booking_Activity extends AppCompatActivity {
             reference.child(child).setValue(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void unused) {
+
                     confirmBtn.setEnabled(false);
                     Toast.makeText(Booking_Activity.this, "Booking Request sent", Toast.LENGTH_SHORT).show();
+
+                    Snackbar snackbar = Snackbar.make(constraintLayout, "View Ticket", Snackbar.LENGTH_INDEFINITE);
+                    View customSnackbarView = getLayoutInflater().inflate(R.layout.custom_snake_bar, null);
+                    snackbar.getView().setBackgroundColor(Color.TRANSPARENT); // Make Snackbar background transparent
+                    @SuppressLint("RestrictedApi") Snackbar.SnackbarLayout snackbarLayout = (Snackbar.SnackbarLayout) snackbar.getView();
+                    snackbarLayout.addView(customSnackbarView, 0);
+
+// Find the buttons in the custom layout
+                    Button btnView = customSnackbarView.findViewById(R.id.btnView);
+                    Button btnDismiss = customSnackbarView.findViewById(R.id.btnDismiss);
+
+// Set click listeners for the buttons
+                    btnView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            startActivity(new Intent(Booking_Activity.this, Profile_Activity.class));
+                            snackbar.dismiss(); // Dismiss the snackbar if needed
+                        }
+                    });
+
+                    btnDismiss.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            snackbar.dismiss(); // Dismiss the snackbar if needed
+                            // Your negative action logic here
+                        }
+                    });
+
+                    snackbar.show();
                 }
+
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {

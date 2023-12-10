@@ -110,6 +110,7 @@ public class Setup_Profile_Fragment extends Fragment {
                                     Intent intent = new Intent(getActivity(),MainActivity.class);
                                     intent.putExtra("personName",name);
                                     intent.putExtra("imageUrl",image);
+                                    startActivity(intent);
                                     getActivity().finish();
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
