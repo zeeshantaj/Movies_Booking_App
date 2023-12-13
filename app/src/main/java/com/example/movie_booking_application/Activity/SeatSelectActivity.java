@@ -133,14 +133,26 @@ public class SeatSelectActivity extends AppCompatActivity implements View.OnClic
                 view.setText("");
                 layout.addView(view);
             }
+
         }
+        Intent intent1 = getIntent();
+        String imageUrl = intent1.getStringExtra("imageUrl");
+        String title = intent1.getStringExtra("title");
+        String des = intent1.getStringExtra("des");
+
+
         confirmBtn.setOnClickListener(v -> {
             if (selectedIds.isEmpty()){
                 Toast.makeText(this, "Please select a seat", Toast.LENGTH_SHORT).show();
             }
             else {
                 Intent intent = new Intent(this, Booking_Activity.class);
+
+
                 intent.putExtra("selectedSeats",selectedIds);
+                intent.putExtra("imageUrl",imageUrl);
+                intent.putExtra("title",title);
+                intent.putExtra("des",des);
                 startActivity(intent);
                 finish();
 

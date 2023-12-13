@@ -38,6 +38,8 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
         holder.person.setText(model.getPerson());
         holder.date.setText(model.getCurrentTime());
         holder.title.setText(model.getMovieTitle());
+        holder.seatNo.setText("Seat No: "+model.getSeatNo());
+
 
         Glide.with(holder.itemView.getContext())
                 .load(model.getImageUrl())
@@ -50,7 +52,7 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView title,date,person,showTime;
+        private TextView title,date,person,showTime,seatNo;
         private ImageView imageView;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -60,6 +62,7 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
             person = itemView.findViewById(R.id.ticket_person);
             imageView = itemView.findViewById(R.id.imageView2);
             showTime = itemView.findViewById(R.id.ticketShowTime);
+            seatNo = itemView.findViewById(R.id.seatNoTxt);
         }
     }
 }
