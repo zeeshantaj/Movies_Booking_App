@@ -32,6 +32,7 @@ import android.widget.Toast;
 import com.example.movie_booking_application.Activity.Profile_Activity;
 import com.example.movie_booking_application.Adapter.MoviesAdapter;
 import com.example.movie_booking_application.Animator.ItemClickedAnimator;
+import com.example.movie_booking_application.Login.LoginActivity;
 import com.example.movie_booking_application.Model.Movies;
 import com.facebook.shimmer.Shimmer;
 import com.facebook.shimmer.ShimmerFrameLayout;
@@ -65,8 +66,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.activity_main);
 
         recyclerView = findViewById(R.id.movie_recycler);
@@ -109,6 +108,9 @@ public class MainActivity extends AppCompatActivity {
                         public void onClick(DialogInterface dialog, int id) {
                             FirebaseAuth auth = FirebaseAuth.getInstance();
                             auth.signOut();
+                            Toast.makeText(MainActivity.this, "SignOut Successfully ", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                            finish();
                             dialog.cancel();
                         }
                     });

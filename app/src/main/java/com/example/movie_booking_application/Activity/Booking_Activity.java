@@ -58,8 +58,6 @@ public class Booking_Activity extends AppCompatActivity {
     private RadioGroup radioGroup;
     private String selectedText,imageUrl;
     private Button selectSeatBtn;
-    private SharedPreferences sharedPreferences;
-    private SharedPreferences.Editor editor;
     private String titleStr,desStr,selectedSeatNumber;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
