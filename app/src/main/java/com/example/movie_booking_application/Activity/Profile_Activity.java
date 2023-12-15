@@ -10,7 +10,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -50,11 +52,16 @@ public class Profile_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        Intent intent = getIntent();
-        String name = intent.getStringExtra("personName");
-        String imageUrl = intent.getStringExtra("imageUrl");
         profileImage = findViewById(R.id.profileImage);
         profileName = findViewById(R.id.profileName);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+
+// Retrieve data using keys
+        String name = sharedPreferences.getString("shareName", ""); // Default value "" if key not found
+        String imageUrl = sharedPreferences.getString("shareImageUrl", ""); // Default value "" if key not found
+
+
         Glide.with(this)
                 .load(imageUrl)
                 .into(profileImage);
@@ -118,6 +125,7 @@ public class Profile_Activity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home){
             getOnBackPressedDispatcher().onBackPressed();
+
             return true;
         }
         return super.onOptionsItemSelected(item);

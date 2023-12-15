@@ -87,7 +87,7 @@
             android:stateListAnimator="@animator/scale_pressed"
             android:text="@string/next"
             android:textAllCaps="false"
-            android:textColor="?android:textColor"
+            android:textColor="@color/black"
             android:textSize="18sp"
             android:layout_marginTop="25dp"/>
     </LinearLayout>

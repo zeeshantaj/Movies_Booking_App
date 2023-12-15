@@ -239,6 +239,7 @@ public class Booking_Activity extends AppCompatActivity {
                         @Override
                         public void onClick(View view) {
                             startActivity(new Intent(Booking_Activity.this, Profile_Activity.class));
+                            finish();
                             snackbar.dismiss(); // Dismiss the snackbar if needed
                         }
                     });
