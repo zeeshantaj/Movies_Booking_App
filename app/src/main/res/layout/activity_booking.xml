@@ -252,6 +252,25 @@
                 app:layout_constraintStart_toStartOf="@id/selectSeatBtn"
                 app:layout_constraintTop_toBottomOf="@id/selectSeatBtn" />
 
+            <TextView
+                android:id="@+id/priceTxt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="Price for 1 ticket Rs: 1500"
+                android:textColor="?android:textColor"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginEnd="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/selectSeatBtn"
+                app:layout_constraintTop_toBottomOf="@id/seatNumberText" />
+
+
+
+
             <Button
                 android:id="@+id/selectSeatBtn"
                 android:layout_width="wrap_content"
@@ -282,7 +301,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/seatNumberText" />
+                app:layout_constraintTop_toBottomOf="@id/priceTxt" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

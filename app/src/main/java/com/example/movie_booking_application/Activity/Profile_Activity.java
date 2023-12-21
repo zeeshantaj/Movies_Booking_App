@@ -37,6 +37,7 @@ import com.google.firebase.database.ValueEventListener;
 import org.imaginativeworld.whynotimagecarousel.model.CarouselItem;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Profile_Activity extends AppCompatActivity {
@@ -93,10 +94,14 @@ public class Profile_Activity extends AppCompatActivity {
                 ticketList.clear();
                 if (snapshot.exists()) {
                   for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                      //String key = String.valueOf(dataSnapshot.getKey());
+                      String key = dataSnapshot.getKey();
+                      Log.e("MyApp","keys ->"+dataSnapshot.getKey());
+
                       BookingModel model = dataSnapshot.getValue(BookingModel.class);
+                      model.setTicketId(key);
                       ticketList.add(model);
                   }
-
                   adapter = new TicketAdapter(ticketList);
                   recyclerView.setAdapter(adapter);
                   adapter.notifyDataSetChanged();
@@ -109,6 +114,7 @@ public class Profile_Activity extends AppCompatActivity {
                 Toast.makeText(Profile_Activity.this, "Error "+error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+
     }
     private void setToolbar(){
         toolbar = findViewById(R.id.bookedToolbar);

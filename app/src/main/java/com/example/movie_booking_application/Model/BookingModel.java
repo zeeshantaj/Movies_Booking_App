@@ -1,7 +1,7 @@
 package com.example.movie_booking_application.Model;
 
 public class BookingModel {
-    private String movieTitle,imageUrl,timing,person,currentTime,seatNo;
+    private String ticketId,movieTitle,imageUrl,timing,person,currentTime,seatNo;
 
     public BookingModel() {
 
@@ -14,6 +14,14 @@ public class BookingModel {
         this.person = person;
         this.currentTime = currentTime;
         this.seatNo = seatNo;
+    }
+
+    public String getTicketId() {
+        return ticketId;
+    }
+
+    public void setTicketId(String ticketId) {
+        this.ticketId = ticketId;
     }
 
     public String getSeatNo() {

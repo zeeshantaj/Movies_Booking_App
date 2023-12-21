@@ -19,6 +19,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.window.OnBackInvokedDispatcher;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -50,7 +51,7 @@ import java.util.Locale;
 
 public class Booking_Activity extends AppCompatActivity {
     private ImageView add,minus;
-    private TextView incrementText,title,des;
+    private TextView incrementText,title,des,priceTxt;
     private ImageView movieImage;
     private int count = 1;
     private Toolbar toolbar;
@@ -59,6 +60,7 @@ public class Booking_Activity extends AppCompatActivity {
     private String selectedText,imageUrl;
     private Button selectSeatBtn;
     private String titleStr,desStr,selectedSeatNumber;
+    private int priceCount = 1500;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +69,7 @@ public class Booking_Activity extends AppCompatActivity {
 
         movieImage = findViewById(R.id.movie_img_book);
         title = findViewById(R.id.movie_title_book);
+        priceTxt = findViewById(R.id.priceTxt);
         des = findViewById(R.id.movie_des_book);
         add = findViewById(R.id.addBtn);
         minus = findViewById(R.id.minusBtn);
@@ -85,8 +88,11 @@ public class Booking_Activity extends AppCompatActivity {
         add.setOnClickListener(v -> {
             add.setEnabled(true);
             count++;
+            priceCount += 1500;
             incrementText.setText(String.valueOf(count));
-            if (count == 100){
+            String formatted = String.format(Locale.US,"Price for %d ticket Rs: %d ",count,priceCount);
+            priceTxt.setText(formatted);
+            if (count == 100 ){
                 Toast.makeText(this, "Limit Exceed", Toast.LENGTH_SHORT).show();
                 add.setEnabled(false);
             }
@@ -94,7 +100,10 @@ public class Booking_Activity extends AppCompatActivity {
         minus.setOnClickListener(v -> {
             if (count > 1){
                 count--;
+                priceCount -= 1500;
                 incrementText.setText(String.valueOf(count));
+                String formatted = String.format(Locale.US,"Price for %d ticket Rs: %d ",count,priceCount);
+                priceTxt.setText(formatted);
             }
         });
 
@@ -104,38 +113,18 @@ public class Booking_Activity extends AppCompatActivity {
             intent1.putExtra("title",titleStr);
             intent1.putExtra("des",desStr);
             startActivity(intent1);
+            finish();
         });
+
+        //priceTxt.setText(String.valueOf("Price for  "+count+" ticket Rs: "+priceCount));
+
+
 
         setDetails();
         setToolbar();
         bookTicket();
     }
     private void setDetails(){
-
-//        Intent intent = getIntent();
-//        imageUrl = intent.getStringExtra("imageUrl");
-//        String titleStr = intent.getStringExtra("title");
-//        String desStr = intent.getStringExtra("des");
-
-
-
-// Get SharedPreferences instance
-//        sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-//        editor = sharedPreferences.edit();
-//
-//// Save data to SharedPreferences
-//        editor.putString("imageUrl", imageUrl);
-//        editor.putString("title", titleStr);
-//        editor.putString("des", desStr);
-//        editor.apply();
-//
-//
-//        sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-//
-//        imageUrl = sharedPreferences.getString("imageUrl", "");
-//        titleStr = sharedPreferences.getString("title", "");
-//        desStr = sharedPreferences.getString("des", "");
-
 
         title.setText(titleStr);
         des.setText(desStr);
@@ -265,6 +254,19 @@ public class Booking_Activity extends AppCompatActivity {
 
 
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        finish();
+    }
+
+    @NonNull
+    @Override
+    public OnBackInvokedDispatcher getOnBackInvokedDispatcher() {
+        finish();
+        return super.getOnBackInvokedDispatcher();
     }
 
     @Override
